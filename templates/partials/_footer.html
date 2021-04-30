@@ -1,0 +1,33 @@
+{% load static %}
+
+<!--Footer-->
+<footer class="bg-light text-lg-start">
+    <hr class="m-0"/>
+    <div class="text-center py-4 align-items-center">
+        <p>Follow us on social media</p>
+        <!-- <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow">
+            <i class="fab fa-facebook-f"></i>
+        </a> -->
+        <a href="https://twitter.com/_dashgin_" class="btn btn-info m-1" role="button" rel="nofollow">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/dashgin" class="btn btn-dark m-1" role="button" rel="nofollow">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        ©{% now 'Y' %} Copyright:
+        <a class="text-dark" href="{% url 'home' %}">Dashgin</a>
+    </div>
+</footer>
+
+<!-- SCRIPT FILES -->
+<script type="text/javascript" src="{% static 'assets/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script src="{% static 'assets/prism/prism.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

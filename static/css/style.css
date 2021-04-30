@@ -1,0 +1,108 @@
+#intro {
+    /* Margin to fix overlapping fixed navbar */
+    margin-top: 40px;
+}
+
+@media (max-width: 991px) {
+    #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 32px;
+    }
+}
+
+/* Theme toggle */
+.switch {
+    display: flex;
+    height: 25px;
+    position: relative;
+    width: 60px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #FFF;
+    border: 1px solid #222;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #222;
+    border: 1px solid #222;
+    bottom: 3px;
+    content: "";
+    height: 17px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 17px;
+    z-index: 421;
+}
+
+input:checked + .slider {
+    background-color: #222;
+}
+
+input:checked + .slider:before {
+    transform: translateX(31px);
+    border-color: #fff;
+    background-color: #fff;
+}
+
+.slider.round {
+    border-radius: 31px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle-moon, .toggle-sun {
+    width: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 420;
+}
+
+/*ckeditor*/
+blockquote {
+    font-style: italic;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    padding: .25rem .75rem .25rem 1rem;
+    margin-left: 2.5rem;
+    background-color: #f3eded;
+    border-left: .3rem solid #b1aaaa;
+    line-height: 3rem;
+}
+blockquote p{
+    margin-bottom: 0;
+}
+/*categories and tags section*/
+
+ul.s-b {
+    max-height: 32vh;
+    overflow: auto;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px
+}
+
+::-webkit-scrollbar-track {
+    background: #333
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1d33ab;
+}

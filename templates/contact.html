@@ -1,0 +1,54 @@
+{% extends "partials/_base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Əlaqə{% endblock %}
+{% block content %}
+
+
+    <main>
+        <section class="container">
+            <form class="col-6 mx-auto mt-4" action="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-outline mb-4">
+                        {{ field|add_class:'form-control' }}
+                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-dark btn-block mb-4">Send</button>
+            </form>
+        </section>
+    </main>
+
+    {#    <style>#}
+    {#        textarea {#}
+    {#            height: 14rem !important#}
+    {#        }#}
+    {#    </style>#}
+    {#    <form method="POST" novalidate style="user-select: none">#}
+    {#        {% csrf_token %}#}
+    {#        {% for field in form.visible_fields %}#}
+    {#            <div class="form-floating">#}
+    {#                {% if form.is_bound %}#}
+    {#                    {% if field.errors %}#}
+    {#                        {{ field|add_class:'form-control shadow-none is-invalid' }}#}
+    {#                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>#}
+    {#                        {% for error in field.errors %}#}
+    {#                            <div class="invalid-feedback">{{ error }}</div>#}
+    {#                        {% endfor %}#}
+    {#                    {% else %}#}
+    {#                        {{ field|add_class:'form-control shadow-none is-valid' }}#}
+    {#                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>#}
+    {#                    {% endif %}#}
+    {#                {% else %}#}
+    {#                    {% render_field field class="form-control my-2" placeholder=field.label %}#}
+    {#                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>#}
+    {#                {% endif %}#}
+    {#            </div>#}
+    {##}
+    {#        {% endfor %}#}
+    {#        <button type="submit" class="btn btn-primary w-100" id="sendMessageButton">Göndər#}
+    {#        </button>#}
+    {#    </form>#}
+
+{% endblock %}

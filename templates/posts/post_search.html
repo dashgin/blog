@@ -1,0 +1,83 @@
+{% extends "partials/_base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+    <!--Main layout-->
+
+    <main class="mt-4 mb-5">
+        <div class="container">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-8 mb-4">
+                    <!--Section: Post data-mdb-->
+                    <section class="border-bottom mb-4">
+                        {% if request.GET.q %}
+                            <h4 class="mb-5 ps-4"><strong>Results for - {{ request.GET.q }}</strong></h4>
+                        {% endif %}
+                        <div class="row row-cols-1 row-cols-lg-2 g-4 px-4">
+                            {% if post_list %}
+                                {% for post in post_list %}
+                                    <div class="col">
+                                        <div class="card h-100 rounded-2">
+                                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                                <img src="{{ post.image.url }}" class="img-fluid" alt="post"/>
+                                                <a href="{% url 'post-detail' post.slug %}">
+                                                    <div class="mask"
+                                                         style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                                </a>
+                                            </div>
+                                            <div class="card-body py-2">
+                                                <h5 class="card-title"><a class="text-dark"
+                                                                          href="{% url 'post-detail' post.slug %}">{{ post.title }}</a>
+                                                </h5>
+                                                <p class="card-text">
+                                                    {{ post.subtitle|truncatechars:90|safe }}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-end py-1">
+                                                <a href="{% url 'post-detail' post.slug %}#comments"><i
+                                                        class="far fa-comments"></i> {{ post.comments.count }}</a> |
+                                                <i class="far fa-eye"></i> {{ post.total_hit_count }}
+                                                <small class="text-muted float-start">Published {{ post.created_at|naturaltime }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted">There is not a post that matches your query</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav class="my-4" aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+                <div class="col-md-4 mb-4">
+                    {% include 'partials/_sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

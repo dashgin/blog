@@ -1,0 +1,23 @@
+{% extends "partials/_base.html" %}
+{% load crispy_forms_filters %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}Ana səhifə{% endblock %}
+
+{% block content %}
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-9 mx-auto">
+                <form method="POST" class="form-group uniForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-success col-12" name="action" value="Post"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

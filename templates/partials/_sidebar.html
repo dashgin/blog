@@ -1,0 +1,49 @@
+<!--Section: Sidebar-->
+<section class="sticky-top px-4" style="top: 80px;">
+
+
+    <!--Section: Search form -->
+    <section class="mb-2">
+        <form class="input-group" method="get" action="{% url 'search' %}">
+            <input type="search" name="q" class="form-control rounded"
+                   placeholder="Search"
+                   aria-label="Search"
+                   value="{{ request.GET.q }}"
+                   aria-describedby="search-addon"/>
+        </form>
+    </section>
+    <!--Section: Search form -->
+
+
+    <!--Section: Most reads-->
+    <section class="mb-3">
+        <h4 class="mb-1 text-center"><strong>Most reads</strong></h4>
+        <ul class="list-group border-top border-bottom border-2 s-b">
+            {% for post in all_posts %}
+                <a href="{% url 'post-detail' post.slug %}" class="text-dark list-group-item d-flex justify-content-between align-items-center">
+                    {{ post.title }}
+                    <span class="badge bg-primary rounded-pill">{{ post.total_hit_count }}</span>
+                </a>
+            {% endfor %}
+
+        </ul>
+    </section>
+    <!--Section: Most reads-->
+
+
+    <!--Section: Tags-->
+    <section>
+        <h4 class="mb-1 text-center"><strong>Tags</strong></h4>
+        <div class="border border-2 p-1 s-b">
+            {% for tag in tags %}
+                <a href="{% url 'posts-by-tags' tag.slug %}" class="d-inline-block border-dark border border-1 p-1 m-1 text-nowrap text-dark">
+                    {{ tag.name }}
+                    <small class="badge bg-primary rounded-pill">{{ tag.number_of_posts }}</small>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    <!--Section: Tags-->
+
+</section>
+<!--Section: Sidebar-->
