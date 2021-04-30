@@ -9,3 +9,4 @@ django-tinymce==3.3.0
 django-widget-tweaks==1.4.8
 Pillow==8.2.0
 whitenoise==5.2.0
+psycopg2-binary
