@@ -3,7 +3,7 @@ from .base import *
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'dashgin.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'dashgin.herokuapp.com', 'dashgin.me']
 
 DATABASES = {
     'default': {
