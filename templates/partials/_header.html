@@ -5,112 +5,116 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-      {% progressive_web_app_meta %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    {% progressive_web_app_meta %}
     <link rel="icon" href="{% static 'fav_icon.png' %}" type="image/png">
     <link rel="stylesheet" href="{% static 'assets/src/fontawesome/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/prism/prism.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" type="text/css" id="theme-link">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-<header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top py-1">
-        <!-- Container wrapper -->
-        <div class="container">
-            <!-- Navbar brand -->
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'img/blog.png' %}" height="30" alt="Technology blog"/>
-            </a>
-            <!-- Toggle button -->
-            <button
-                    class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top py-1">
+            <!-- Container wrapper -->
+            <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'img/blog.png' %}" height="30" alt="Technology blog" />
+                </a>
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
                     data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left links -->
-                <ul class="navbar-nav mb-2 mb-lg-0 text-center">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'post-list' or request.resolver_match.url_name == 'post-archive' %}active{% endif %}" href="{% url 'post-list' %}">Post Archive</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'post-create' %}active{% endif %}" href="{% url 'post-create' %}">New</a>
-                    </li>
-                    {% endif %}
-                    {% if user.is_superuser %}
-                    <li class="nav-item">
-                        <a class="nav-link " href="{% url 'admin:index' %}">Admin</a>
-                    </li>
-                    {% endif %}
-                    <!-- Navbar dropdown -->
-                    <li class="nav-item dropdown align-self-center">
-                        <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'posts-by-category' %}active{% endif %}"
-                           href="#" id="navbarDropdown" role="button"
-                           data-mdb-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </a>
-                        <!-- Dropdown menu -->
-                        <ul class="dropdown-menu align-self-center" aria-labelledby="navbarDropdown">
-                            {% for category in categories %}
-                                <li><a href="{% url 'posts-by-category' category.slug %}"
-                                       class="dropdown-item"> {{ category }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-                <!-- Dark/Light toggle -->
-                <label class="switch mx-auto ms-md-auto me-md-0" for="darkSwitch">
-                    <input type="checkbox" id="darkSwitch"/>
-                    <span class="slider round"></span>
-                    <span class="toggle-moon"><i class="fa fa-sun text-white"></i></span>
-                    <span class="toggle-sun"><i class="fa fa-moon text-dark"></i>️</span>
-                </label>
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left links -->
+                    <ul class="navbar-nav mb-2 mb-lg-0 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                                aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'post-list' or request.resolver_match.url_name == 'post-archive' %}active{% endif %}"
+                                href="{% url 'post-list' %}">Post Archive</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+                                href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <!-- Navbar dropdown -->
+                        <li class="nav-item dropdown align-self-center">
+                            <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'posts-by-category' %}active{% endif %}"
+                                href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
+                                aria-expanded="false">
+                                Categories
+                            </a>
+                            <!-- Dropdown menu -->
+                            <ul class="dropdown-menu align-self-center" aria-labelledby="navbarDropdown">
+                                {% for category in categories %}
+                                <li><a href="{% url 'posts-by-category' category.slug %}" class="dropdown-item"> {{
+                                        category }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% if user.is_authenticated %}
+                        |
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'post-create' %}active{% endif %}"
+                                href="{% url 'post-create' %}">New</a>
+                        </li>
+                        {% endif %}
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                        |
+                        {% endif %}
+                    </ul>
+                    <!-- Dark/Light toggle -->
+                    <label class="switch mx-auto ms-md-auto me-md-0" for="darkSwitch">
+                        <input type="checkbox" id="darkSwitch" />
+                        <span class="slider round"></span>
+                        <span class="toggle-moon"><i class="fa fa-sun text-white"></i></span>
+                        <span class="toggle-sun"><i class="fa fa-moon text-dark"></i>️</span>
+                    </label>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- Messages -->
-    <div class="form-group fixed-top text-end mt-5 me-1">
-        {% if messages %}
+        </nav>
+        <!-- Messages -->
+        <div class="form-group fixed-top text-end mt-5 me-1">
+            {% if messages %}
             {% for message in messages %}
-                <div class="d-inline-block alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    <span> {{ message }}</span>
-                    <button type="button" class="btn-close shadow-none"
-                            data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="d-inline-block alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <span> {{ message }}</span>
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             {% endfor %}
-        {% endif %}
-    </div>
-    <!-- Messages -->
+            {% endif %}
+        </div>
+        <!-- Messages -->
 
-    <!-- Jumbotron -->
-    <div id="intro" class="p-2 text-center bg-image "
-         style="background-image: url({% static 'img/jumbotron.jpg' %}); height: 35vh;">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white">
-                    <h1 class="mb-3 h1">Technology Blog</h1>
-                    <p class="mb-3">Best & free web blog </p>
-                    <a class="btn btn-outline-light btn-lg m-2" href="#" role="button">Download App</a>
+        <!-- Jumbotron -->
+        <div id="intro" class="p-2 text-center bg-image "
+            style="background-image: url({% static 'img/jumbotron.jpg' %}); height: 35vh;">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white">
+                        <h1 class="mb-3 h1">Technology Blog</h1>
+                        <p class="mb-3">Best & free web blog </p>
+                        <a class="btn btn-outline-light btn-lg m-2" href="#" role="button">Download App</a>
+                    </div>
+
                 </div>
-
             </div>
         </div>
-    </div>
-    <!-- Jumbotron -->
-</header>
+        <!-- Jumbotron -->
+    </header>
