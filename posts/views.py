@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, DetailView, MonthArchiveView
 from django.views.generic.edit import FormMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Comment
 from .forms import PostCreateForm, CommentForm
@@ -34,7 +35,7 @@ class PostsByTagListView(ListView):
         return posts
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'posts/post_create.html'
