@@ -42,8 +42,8 @@ class PostManager(models.Manager):
 
 class Post(models.Model, HitCountMixin):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    subtitle = models.CharField(max_length=100)
+    title = models.CharField(max_length=150)
+    subtitle = models.CharField(max_length=200)
     content = RichTextUploadingField(config_name='post_content')
     slug = models.SlugField(max_length=55, unique=True, editable=False)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
