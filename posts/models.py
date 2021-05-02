@@ -33,11 +33,16 @@ class Tag(models.Model):
 
 
 class PostManager(models.Manager):
-    pass
+    def active(self):
+        return Post.objects.filter(is_active=True)
     # def total_view_count(self):
     #     view_count = 0
     #     view_count = view_count + 1
     #     return view_count
+
+class PublishedPostManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager, self).get_queryset().filter(is_active=True)
 
 
 class Post(models.Model, HitCountMixin):
@@ -57,7 +62,8 @@ class Post(models.Model, HitCountMixin):
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation')
 
-    # object = PostManager()
+    published = PublishedPostManager()
+
     class Meta:
         ordering = ['-created_at']
 
