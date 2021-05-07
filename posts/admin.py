@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from posts.models import Category, Tag, Post, Comment
+from posts.models import Category, Tag, Post, Comment, PostViews
+
+admin.site.register(PostViews)
 
 
 @admin.register(Category)
@@ -15,7 +17,7 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_active', 'view_count')
+    list_display = ('title', 'is_active', 'views_count')
     list_filter = ('author', 'category', 'tags', 'is_active',)
     search_fields = ('title', 'subtitle')
     readonly_fields = ['created_at', 'updated_at']

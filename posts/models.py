@@ -30,6 +30,14 @@ class Tag(models.Model):
         verbose_name_plural = "tags"
 
 
+class PostViews(models.Model):
+    ip_address = models.GenericIPAddressField(null=True)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.ip_address} in Post: {self.post.title}'
+
+
 class PostManager(models.Manager):
     def all(self):
         return Post.objects.filter(is_active=True)
@@ -51,7 +59,10 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=False)
     is_draft = models.BooleanField(default=False)
-    view_count = models.PositiveIntegerField(default=0)
+
+    @property
+    def views_count(self):
+        return PostViews.objects.filter(post=self).count()
 
     objects = PostManager()
 
@@ -77,7 +88,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
-
 
 
 class Comment(models.Model):

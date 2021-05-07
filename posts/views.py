@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView, DetailView, MonthArchiveV
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Post, Comment
+from .models import Post, Comment, PostViews
 from .forms import PostCreateForm, CommentForm
 
 
@@ -53,8 +53,10 @@ class PostDetailView(FormMixin, DetailView):
 
     def get_object(self, *args, **kwargs):
         obj = super().get_object()
-        obj.view_count += 1
-        obj.save()
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        ip = x_forwarded_for.split(',')[0] if x_forwarded_for else self.request.META.get('REMOTE_ADDR')
+        PostViews.objects.get_or_create(post=obj, ip_address=ip)
+        print(obj.views_count)
         return obj
 
     def get_success_url(self):
@@ -65,9 +67,6 @@ class PostDetailView(FormMixin, DetailView):
         context['post'] = self.get_queryset()
         context['comments'] = Comment.objects.filter(post__slug=self.kwargs['slug'])
         context['form'] = CommentForm(initial={'post': self.object})
-        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
-        ip = x_forwarded_for.split(',')[0] if x_forwarded_for else self.request.META.get('REMOTE_ADDR')
-        context['ip'] = ip
         return context
 
     def post(self, request, *args, **kwargs):
