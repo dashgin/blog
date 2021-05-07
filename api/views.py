@@ -4,12 +4,12 @@ from posts.models import Category, Tag, Post
 
 
 class PostListCreateAPIView(ListCreateAPIView):
-    queryset = Post.objects.all()
+    queryset = all()
     serializer_class = PostSerializer
 
 
 class PostRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
+    queryset = all()
     serializer_class = PostSerializer
 
 

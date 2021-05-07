@@ -3,8 +3,6 @@ from django.conf import settings
 from django.urls import reverse
 from django.utils.text import slugify
 from tinymce.models import HTMLField
-from hitcount.models import HitCountMixin, HitCount
-from django.contrib.contenttypes.fields import GenericRelation
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
@@ -33,36 +31,29 @@ class Tag(models.Model):
 
 
 class PostManager(models.Manager):
-    def active(self):
+    def all(self):
         return Post.objects.filter(is_active=True)
-    # def total_view_count(self):
-    #     view_count = 0
-    #     view_count = view_count + 1
-    #     return view_count
 
-class PublishedPostManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager, self).get_queryset().filter(is_active=True)
+        return super(PostManager, self).get_queryset()
 
 
-class Post(models.Model, HitCountMixin):
+class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=200)
     content = RichTextUploadingField(config_name='post_content')
     slug = models.SlugField(max_length=55, unique=True, editable=False)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
-    tags = models.ManyToManyField(Tag)
+    category = models.ForeignKey(Category, related_name='post_category', on_delete=models.DO_NOTHING)
+    tags = models.ManyToManyField(Tag, related_name='post_tags', )
     image = models.ImageField(upload_to='images/posts', default='images/default.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=False)
     is_draft = models.BooleanField(default=False)
-    hit_count_generic = GenericRelation(
-        HitCount, object_id_field='object_pk',
-        related_query_name='hit_count_generic_relation')
+    view_count = models.PositiveIntegerField(default=0)
 
-    published = PublishedPostManager()
+    objects = PostManager()
 
     class Meta:
         ordering = ['-created_at']
@@ -87,8 +78,6 @@ class Post(models.Model, HitCountMixin):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
 
-    def total_hit_count(self):  # total views count of product
-        return self.hit_count.hits
 
 
 class Comment(models.Model):

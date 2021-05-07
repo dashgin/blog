@@ -22,7 +22,7 @@
             {% for post in all_posts %}
                 <a href="{% url 'post-detail' post.slug %}" class="text-dark list-group-item d-flex justify-content-between align-items-center">
                     {{ post.title }}
-                    <span class="badge bg-primary rounded-pill">{{ post.total_hit_count }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ post.view_count }}</span>
                 </a>
             {% endfor %}
 

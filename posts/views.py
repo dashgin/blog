@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, F
 from django.urls import reverse
 from django.views.generic import ListView, CreateView, DetailView, MonthArchiveView
 from django.views.generic.edit import FormMixin
@@ -6,7 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Comment
 from .forms import PostCreateForm, CommentForm
-from hitcount.views import HitCountDetailView
 
 
 class PostListView(ListView):
@@ -21,7 +20,7 @@ class PostsByCategoryListView(ListView):
     context_object_name = 'post_list'
 
     def get_queryset(self, *args, **kwargs):
-        posts = Post.objects.filter(category__slug=self.kwargs['slug'])
+        posts = Post.objects.filter(category__slug=self.kwargs['slug'], is_active=True)
         return posts
 
 
@@ -31,7 +30,7 @@ class PostsByTagListView(ListView):
     context_object_name = 'post_list'
 
     def get_queryset(self, *args, **kwargs):
-        posts = Post.objects.filter(tags__slug=self.kwargs['slug'])
+        posts = Post.objects.filter(tags__slug=self.kwargs['slug'], is_active=True)
         return posts
 
 
@@ -47,20 +46,28 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostDetailView(FormMixin, HitCountDetailView):
+class PostDetailView(FormMixin, DetailView):
     model = Post
     template_name = 'posts/post_detail.html'
     form_class = CommentForm
-    count_hit = True
+
+    def get_object(self, *args, **kwargs):
+        obj = super().get_object()
+        obj.view_count += 1
+        obj.save()
+        return obj
 
     def get_success_url(self):
         return reverse('post-detail', kwargs={'slug': self.object.slug})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['post'] = Post.objects.get(slug=self.kwargs['slug'])
+        context['post'] = self.get_queryset()
         context['comments'] = Comment.objects.filter(post__slug=self.kwargs['slug'])
         context['form'] = CommentForm(initial={'post': self.object})
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        ip = x_forwarded_for.split(',')[0] if x_forwarded_for else self.request.META.get('REMOTE_ADDR')
+        context['ip'] = ip
         return context
 
     def post(self, request, *args, **kwargs):
