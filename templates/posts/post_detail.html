@@ -3,7 +3,7 @@
 {% load humanize %}
 {% load static %}
 
-{% block title %}Ana səhifə{% endblock %}
+{% block title %}{{ post.title|capfirst }}{% endblock %}
 
 {% block content %}
     <!--Main layout-->
