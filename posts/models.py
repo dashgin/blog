@@ -64,7 +64,7 @@ class Post(models.Model):
     def views_count(self):
         return PostViews.objects.filter(post=self).count()
 
-    objects = PostManager()
+#    objects = PostManager()
 
     class Meta:
         ordering = ['-created_at']
