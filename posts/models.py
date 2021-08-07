@@ -54,7 +54,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=55, unique=True, editable=False)
     category = models.ForeignKey(Category, related_name='post_category', on_delete=models.DO_NOTHING)
     tags = models.ManyToManyField(Tag, related_name='post_tags', )
-    image = models.URLField(null=True, blank=True)
+    image = models.URLField(null=True, blank=True, max_length=555)
     # image = models.ImageField(upload_to='images/posts', default='images/default.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
