@@ -6,18 +6,12 @@ export default function PostList({ match }) {
 
     const [posts, setPosts] = useState([]);
     const [data, setData] = useState('');
-    const [loading, setLoading] = useState(false);
     const url = (`http://127.0.0.1:8000/api/v1/categories/${match.params.slug}/`);
-    function timeout(delay) { return new Promise(res => setTimeout(res, delay)) }
 
     const getPosts = async () => {
-        setLoading(true);
-        await timeout(1);
         const res = await axios.get(url)
         setData(res.data);
         setPosts(res.data.category_posts);
-        console.log(res.data)
-        setLoading(false);
     };
     useEffect(() => {
         getPosts()

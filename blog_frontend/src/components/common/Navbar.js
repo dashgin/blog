@@ -49,7 +49,7 @@ export default function Navbar() {
                         </li>
                         {/* Navbar dropdown */}
                         <li className='nav-item dropdown align-self-center'>
-                            <a className='nav-link dropdown-toggle' d='navbarDropdown' role='button'
+                            <a href="/#" className='nav-link dropdown-toggle' d='navbarDropdown' role='button'
                                 data-mdb-toggle='dropdown' aria-expanded='false'>
                                 Categories
                             </a>

@@ -40,7 +40,7 @@ export default function PostDetail({ match }) {
         <div id='intro'>
             <div className="container mx-auto">
                 <section className="w-75 mx-auto">
-                    <img src={post.image} className='img-fluid w-100 px-5 pt-4'></img>
+                    <img src={post.image} className='img-fluid w-100 px-5 pt-4' alt={post.slug}></img>
                     <section className="border-bottom px-5 mx-auto mb-5 mt-3">
                         <div className="row align-items-center pb-2 border-bottom">
                             <div className="col-lg-6 text-center text-lg-start mb-3 m-lg-0">

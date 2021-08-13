@@ -17,20 +17,15 @@ export default function Contact() {
             </div>
             <section className="col-md-8 mb-4 mx-auto">
                 <form className="col-6 mx-auto mt-4" action="" method="post">
-
-                    <div className="form-outline mb-4">
-                        <input type="text" name="full_name" className="form-control"></input>
-                        <label className="form-label" htmlFor="full_name">Full Name</label>
+                    <div className="form-outine mb-4">
+                        <input type="text" name="full_name" className="form-control" placeholder="Full Name"></input>
                     </div>
-                    <div className="form-outline mb-4">
-                        <input type="email" name="email" className="form-control"></input>
-                        <label className="form-label" htmlFor="email">Email</label>
+                    <div className="form-outine mb-4">
+                        <input type="email" name="email" className="form-control" placeholder="Email"></input>
                     </div>
-                    <div className="form-outline mb-4">
-                        <textarea name="message" className="form-control"></textarea>
-                        <label className="form-label" htmlFor="message">Message</label>
+                    <div className="form-outine mb-4">
+                        <textarea name="message" className="form-control" placeholder="Message" rows='7'></textarea>
                     </div>
-
                     <button type="submit" className="btn btn-dark btn-block mb-4">Send</button>
                 </form>
             </section>
