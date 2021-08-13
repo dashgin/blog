@@ -10,11 +10,23 @@
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>Technology Blog</title>
-  <link rel='stylesheet' href='%PUBLIC_URL%/modules/fontawesome/css/all.min.css' type="text/css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' />
-  <link rel='stylesheet' href='%PUBLIC_URL%/modules/mdb/css/mdb.min.css' type="text/css" />
+  <!-- for cdn links ==> https://mdbootstrap.com/docs/standard/getting-started/installation/#section-cdn -->
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+  
+  <!-- Highlight js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/night-owl.min.css"
+    integrity="sha512-i5X6Fdn/ZqvGSqPrdMa3FgcpXM/Nr6YccSKFYT93zljl/HZDEpvBbE5Pxp91eiWGccZLrL/LDQJd7fjTRYsVaA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Style Sheets -->
   <link rel='stylesheet' href='%PUBLIC_URL%/css/dark-mode.css' type="text/css" />
   <link rel='stylesheet' href='%PUBLIC_URL%/css/style.css' type="text/css" />
+
 </head>
 
 <body>
@@ -22,9 +34,16 @@
   <div id="root"></div>
 
   <!-- SCRIPT FILES -->
-  <script type='text/javascript' src='%PUBLIC_URL%/modules/jquery/dist/jquery.min.js'></script>
-  <script type='text/javascript' src='%PUBLIC_URL%/modules/bootstrap/dist/js/bootstrap.min.js'></script>
-  <script type='text/javascript' src='%PUBLIC_URL%/modules/mdb/js/mdb.min.js'></script>
+  <!-- Jquery-3.5 | Bootstrap-5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+    integrity="sha512-NWNl2ZLgVBoi6lTcMsHgCQyrZVFnSmcaa3zRv0L3aoGXshwoxkGs3esa9zwQHsChGRL4aLDnJjJJeP6MjPX46Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+  <!-- Custom JavaScript -->
   <script type='text/javascript' src='%PUBLIC_URL%/js/main.js'></script>
 </body>
 

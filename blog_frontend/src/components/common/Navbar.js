@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import DarkMode from '../utils/DarkModeToggle'
 import { Link, NavLink } from "react-router-dom"
+import Search from "./Search";
 
 export default function Navbar() {
     const [categories, setCategories] = useState([])
@@ -18,11 +19,11 @@ export default function Navbar() {
     }, [])
 
     return (
-        <nav className='navbar navbar-expand-md navbar-light bg-light fixed-top py-0 shadow-none border-bottom'>
-            <div className='container'>
+        <nav className='navbar navbar-expand-md navbar-light bg-light fixed-top py-1 px-5 shadow-none border-bottom'>
+            <div className='container ps-5'>
                 <NavLink to={'/'} className='navbar-brand py-0 active'>
                     {/* <img src={logo} height='30' alt='Technology blog' /> */}
-                    <i className="fas fa-pen-square text-dark fs-1"></i>
+                    <i className="fab fa-blogger-b text-dark fs-1 active"></i>
                 </NavLink>
                 <button className='navbar-toggler' type='button' data-mdb-toggle='collapse'
                     data-mdb-target='#navbarSupportedContent' aria-controls='navbarSupportedContent'
@@ -61,10 +62,7 @@ export default function Navbar() {
                             </ul>
                         </li>
                     </ul>
-                    <form className='input-group w-auto' method='get' action=''>
-                        <input type='search' name='q' className='form-control rounded' placeholder='Search'
-                            aria-label='Search' aria-describedby='search-addon' />
-                    </form>
+                    <Search />
                     <DarkMode />
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import ShareButtons from '../utils/ShareButtons'
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Highlight from 'react-highlight'
 
 export default function PostDetail({ match }) {
 
@@ -54,13 +55,16 @@ export default function PostDetail({ match }) {
                             </div>
                         </div>
                         <div className="row align-items-center mt-3">
-                            <h1 style={{ fontSize: "3em" }} className='text-capitalize fw-bold'>{post.title} - Applications Uses python decorators</h1>
+                            <h1 style={{ fontSize: "3em" }} className='text-capitalize fw-bold'>{post.title}</h1>
                             {post.post_tags.map(tag =>
                                 <Link to={'/'} key={tag.name}>#{tag.name}</Link>
                             )}
                         </div>
                     </section>
-                    <div id='post-content' dangerouslySetInnerHTML={{ __html: post.content }} />
+                    <Highlight innerHTML={true}>
+                        {post.content}
+                    </Highlight>
+                    {/* <div id='post-content' dangerouslySetInnerHTML={{ __html: post.content }} /> */}
                 </section>
             </div >
             <section className="text-center border-bottom fs-3">
@@ -81,7 +85,6 @@ export default function PostDetail({ match }) {
                                 <Link id="mostReadId" to={`/posts/${post.slug}`}>
                                     <div className="card-body py-0 bg-light text-dark">
                                         <h4 className="card-title py-0">{post.title}</h4>
-                                        <h5 className="card-title">{post.subtitle}</h5>
                                     </div>
                                 </Link>
                                 <div className="card-footer text-light py-0">
