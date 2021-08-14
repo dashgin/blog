@@ -30,8 +30,8 @@ export default function PostDetail({ match }) {
             setLoading(false);
         };
         getPost()
-        getMostReadsPost()
         window.scrollTo(0, 0)
+        getMostReadsPost()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url]);
 

@@ -65,7 +65,7 @@ export default function PostList() {
                                     }>⟨⟨</button>
                             </li>
                             <li className="page-item active">
-                                <span className="page-link">{page}</span>
+                                <span className="page-link py-1">{page}</span>
                             </li>
                             <li className={`${data.next ? "page-item px-1 " : "page-item px-1 d-none"}`}>
                                 <button className="page-link"
