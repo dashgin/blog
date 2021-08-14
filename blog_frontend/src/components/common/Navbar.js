@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import DarkMode from '../utils/DarkModeToggle'
 import { Link, NavLink } from "react-router-dom"
-import Search from "./Search";
+import Search from "../utils/Search";
 
 export default function Navbar() {
     const [categories, setCategories] = useState([])
@@ -13,14 +13,13 @@ export default function Navbar() {
         const res = await axios.get(url)
         setCategories(res.data);
     };
-    console.log(categories)
     useEffect(() => {
         getCategories()
     }, [])
 
     return (
-        <nav className='navbar navbar-expand-md navbar-light bg-light fixed-top py-1 px-5 shadow-none border-bottom'>
-            <div className='container ps-5'>
+        <nav className='navbar navbar-expand-md navbar-light bg-light fixed-top py-1 shadow-none border-bottom'>
+            <div className='container'>
                 <NavLink to={'/'} className='navbar-brand py-0 active'>
                     {/* <img src={logo} height='30' alt='Technology blog' /> */}
                     <i className="fab fa-blogger-b text-dark fs-1 active"></i>
@@ -49,7 +48,7 @@ export default function Navbar() {
                         </li>
                         {/* Navbar dropdown */}
                         <li className='nav-item dropdown align-self-center'>
-                            <a href="/#" className='nav-link dropdown-toggle' d='navbarDropdown' role='button'
+                            <a href="#" className='nav-link dropdown-toggle' id='navbarDropdown' role='button'
                                 data-mdb-toggle='dropdown' aria-expanded='false'>
                                 Categories
                             </a>
@@ -57,7 +56,7 @@ export default function Navbar() {
                             <ul className='dropdown-menu align-self-center' aria-labelledby='navbarDropdown'>
                                 {
                                     categories.map(category =>
-                                        <li><Link to={`/categories/${category.slug}`} className='dropdown-item'>{category.name}</Link></li>
+                                        <li key={category.slug}><Link to={`/categories/${category.slug}`} className='dropdown-item'>{category.name}</Link></li>
                                     )}
                             </ul>
                         </li>

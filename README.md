@@ -3,7 +3,7 @@
 ## Specifications:
 * Frontend with Material Design Bootstrap
 * Highlightjs for post content
-* Search
+* Live Search
 * Sharing post on social media(whatsapp, twitter, facebook, ...)
 * Dark Mode
 * Categories and tags
@@ -15,4 +15,5 @@
 * Comment system
 * Subscription with email
 * PWA(Progressive Web Application)
+* Multi Language Support
 * ...

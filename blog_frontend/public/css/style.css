@@ -130,10 +130,3 @@ pre {
 body.dark h2 {
     color: #fff !important;
 }
-
-.btn {
-    box-shadow: none !important;
-    text-shadow: none !important;
-    font-size: 1em;
-    padding: .5rem 1.2rem .4rem
-}

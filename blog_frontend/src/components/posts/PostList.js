@@ -5,32 +5,31 @@ import PostCard from './PostCard'
 
 
 export default function PostList() {
+    const [posts, setPosts] = useState([])
+    const [data, setData] = useState('')
+    const [page, setPage] = useState(1)
+    const [loading, setLoading] = useState(false)
 
-    const [posts, setPosts] = useState([]);
-    const [data, setData] = useState('');
-    const [url, setUrl] = useState('http://localhost:8000/api/v1/posts/');
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
+    let url = `http://localhost:8000/api/v1/posts/${page && `?page=${page}`}`
 
     function timeout(delay) { return new Promise(res => setTimeout(res, delay)) }
 
     const getPosts = async () => {
-        setLoading(true);
-        await timeout(1);
+        setLoading(true)
+        await timeout(1)
         const res = await axios.get(url)
-        setData(res.data);
-        setPosts(res.data.results);
-        setLoading(false);
-        let page = url.split('?')[1] ? url.split('?')[1].split('=')[1] : 1
-        if (page) {
-            setCurrentPage(page)
-        }
-    };
+        setData(res.data)
+        setPosts(res.data.results)
+        setLoading(false)
+    }
+
+
+    // console.log(url)
     useEffect(() => {
         getPosts()
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url]);
+    }, [url])
 
     return (
         <div>
@@ -46,6 +45,7 @@ export default function PostList() {
                     </div>
                 </div>
             </div>
+
             <div className="col-md-6 mb-4 mx-auto">
                 <section className="mb-4">
                     <h2 className="mb-5 pt-4 ps-4">
@@ -61,15 +61,15 @@ export default function PostList() {
                             }>
                                 <button className="page-link"
                                     onClick={
-                                        () => data.previous ? setUrl(data.previous) : ''
+                                        () => data.previous ? setPage(page - 1) : ''
                                     }>⟨⟨</button>
                             </li>
                             <li className="page-item active">
-                                <span className="page-link">{currentPage}</span>
+                                <span className="page-link">{page}</span>
                             </li>
                             <li className={`${data.next ? "page-item px-1 " : "page-item px-1 d-none"}`}>
                                 <button className="page-link"
-                                    onClick={() => data.next ? setUrl(data.next) : ''}>⟩⟩</button>
+                                    onClick={() => data.next ? setPage(page + 1) : ''}>⟩⟩</button>
                             </li>
                         </ul>
                     </nav>

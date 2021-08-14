@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 import environ
@@ -15,8 +14,16 @@ if READ_DOT_ENV_FILE:
 
 # GENERAL
 DEBUG = env.bool("DJANGO_DEBUG", False)
-TIME_ZONE = "Asia/Baku"
+
+# Internationalization
+LANGUAGES = (
+    ('az', 'Azerbaijan'),
+    ('en', 'English')
+)
+
+DEFAULT_LANGUAGE = 1
 LANGUAGE_CODE = "en"
+TIME_ZONE = "Asia/Baku"
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
@@ -113,6 +120,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "utils.middleware.LanguageMiddleware",
 ]
 
 # STATIC
@@ -153,8 +161,8 @@ TEMPLATES = [
     }
 ]
 
-#Default auto field
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+# Default auto field
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # FIXTURES
 FIXTURE_DIRS = (str(APPS_DIR / "fixtures"),)
@@ -229,8 +237,8 @@ ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_ADAPTER = "blog.users.adapters.AccountAdapter"
-SOCIALACCOUNT_ADAPTER = "blog.users.adapters.SocialAccountAdapter"
+ACCOUNT_ADAPTER = "blog.apps.users.adapters.AccountAdapter"
+SOCIALACCOUNT_ADAPTER = "blog.apps.users.adapters.SocialAccountAdapter"
 
 # django-rest-framework
 REST_FRAMEWORK = {
@@ -243,14 +251,14 @@ REST_FRAMEWORK = {
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 #CORS_URLS_REGEX = r"^/api/.*$"
-CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_ALL_ORIGINS = True  # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 #CORS_ALLOW_CREDENTIALS = True
-#CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
 #    'http://localhost:3000',
-#] # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
-#CORS_ALLOWED_ORIGIN_REGEXES = [
+# ] # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
+# CORS_ALLOWED_ORIGIN_REGEXES = [
 #    'http://localhost:3000',
-#]
+# ]
 
 # CKEDITOR CONFIG
 CKEDITOR_UPLOAD_PATH = 'ckeditor/posts/%Y/%m/%d/'
