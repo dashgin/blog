@@ -16,7 +16,7 @@ class PostListView(ListView):
 
 class PostsByCategoryListView(ListView):
     template_name = 'index.html'
-    paginate_by = 8
+    paginate_by = 2
     context_object_name = 'post_list'
 
     def get_queryset(self, *args, **kwargs):
