@@ -23,7 +23,6 @@ export default function PostList() {
     }
 
 
-    // // console.log(url)
     useEffect(() => {
         getPosts()
         // eslint-disable-next-line react-hooks/exhaustive-deps

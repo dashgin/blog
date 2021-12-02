@@ -22,7 +22,7 @@ const PopularPosts = () => {
 
     useEffect(() => {
         getPosts()
-        console.log(posts)
+        console.log(process.env.REACT_APP_API_URL)
         console.log(loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url])
