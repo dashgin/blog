@@ -1,0 +1,52 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./backend/compose/local/django/Dockerfile
+    image: blog_backend_local_django
+    container_name: django
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app/backend
+    env_file:
+      - ./backend/.envs/.local/.django
+      - ./backend/.envs/.local/.postgres
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./backend/compose/production/postgres/Dockerfile
+    image: blog_production_postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data:Z
+      - local_postgres_data_backups:/backups:z
+    env_file:
+      - ./backend/.envs/.local/.postgres
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/compose/local/Dockerfile
+    image: blog_frontend_local
+    container_name: react
+    volumes:
+      - ./frontend:/app/frontend
+      # One-way volume to use node_modules from inside image
+      # - /app/frontend/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django
+    command: npm start

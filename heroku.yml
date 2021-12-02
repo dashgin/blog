@@ -1,0 +1,14 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+build:
+  docker:
+    web_backend: ./backend/compose/production/django/Dockerfile
+    web_frontend: ./frontend/compose/production/django/Dockerfile
+  config:
+    env_file:
+      - ./backend/.envs/.production/.django
+      - ./backend/.envs/.production/.postgres
+
+run:
+  web_backend: ./start.sh

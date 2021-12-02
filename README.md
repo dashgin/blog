@@ -4,7 +4,7 @@
 * Frontend with Material Design Bootstrap
 * Highlightjs for post content
 * Live Search
-* Sharing post on social media(whatsapp, twitter, facebook, ...)
+* Sharing post on social media(whatsapp, twitter, facebook, ... )
 * Dark Mode
 * Categories and tags
 * Post views(one view for per ip adress)

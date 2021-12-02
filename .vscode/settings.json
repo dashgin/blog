@@ -1,0 +1,26 @@
+{
+    "files.autoSave": "off",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.vscode": true,
+        "**/node_modules": true,
+        // "**/.pylintrc": true,
+        "**/.github": true,
+        "**/.gitignore": true,
+        "**/.gitattributes": true,
+        "**/.gitmodules": true,
+        "**/.dockerignore": true,
+        // "**/.pre-commit-config.yaml": true,
+        // "**/pytest.ini": true,
+        // "**/setup.cfg": true,
+        "**/README*": true,
+        "**/.next": true,
+        "**/__pycache__": true,
+        "**/package-lock.json": true,
+    }
+}
