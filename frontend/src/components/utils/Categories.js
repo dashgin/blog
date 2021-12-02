@@ -15,7 +15,7 @@ const Categories = () => {
 
     useEffect(() => {
         getCategories()
-    }, [categories])
+    }, [])
 
 
     return (
