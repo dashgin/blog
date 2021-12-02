@@ -53,7 +53,7 @@ class PostReadSerializer(serializers.ModelSerializer):
 class PostArchiveReadSerializer(serializers.ModelSerializer):
     date_display = serializers.SerializerMethodField()
     url = serializers.HyperlinkedIdentityField(
-        view_name="api:post-detail", lookup_field="slug"
+        view_name="api:posts:post-detail", lookup_field="slug"
     )
 
     class Meta:
