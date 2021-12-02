@@ -19,10 +19,14 @@ CORS_ORIGIN_WHITELIST = (url for url in FRONTEND_URLS.split(","))
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-secret-key")
 
 # DATABASES
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES['default']["CONN_MAX_AGE"]= 600
-DATABASES['default']["ATOMIC_REQUESTS"]= True
-
+DATABASES = {
+    "default": {
+        "ATOMIC_REQUESTS": True,
+        "CONN_MAX_AGE": 600,
+    }
+}
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)
+\
 # SECURITY
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
@@ -51,7 +55,9 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 ]
 
 # EMAIL
-EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_BACKEND = os.environ.get(
+    "DJANGO_EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
+)
 
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
