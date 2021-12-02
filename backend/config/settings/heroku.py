@@ -14,8 +14,11 @@ BACKEND_URLS = os.environ.get("BACKEND_URLS", "http://localhost:8000")
 FRONTEND_URLS = os.environ.get("FRONTEND_URLS", "http://localhost:3000")
 
 ALLOWED_HOSTS = [url for url in BACKEND_URLS.split(",")]
-CORS_ORIGIN_WHITELIST = (url for url in FRONTEND_URLS.split(","))
-
+CORS_ALLOWED_ORIGINS = [url for url in FRONTEND_URLS.split(",")]
+CORS_ALLOW_METHODS = [
+    "GET",
+    "OPTIONS",
+]
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-secret-key")
 
 # DATABASES
@@ -25,8 +28,8 @@ DATABASES = {
         "CONN_MAX_AGE": 600,
     }
 }
-DATABASES["default"] = dj_database_url.config(conn_max_age=600)
-\
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)  
+
 # SECURITY
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
