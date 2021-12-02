@@ -22,7 +22,7 @@ export default function PostDetail({ match }) {
 
     if (!post) return null;
     return (
-        <div>
+        <div className="blog-post-content">
             <img className="rounded" src={post.image} alt={post.slug}></img>
             <h1 style={{ fontSize: "3em" }}>{post.title}</h1>
             <div>

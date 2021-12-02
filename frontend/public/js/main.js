@@ -96,10 +96,6 @@
 $(document).ready(function () {
     "use strict";
 
-
-    // var $header = $(".header-default"),
-        // $clone = $header.before($header.addClass("fixedd"));
-
     $(window).on("scroll", function () {
         var fromTop = $(window).scrollTop();
         $('header').toggleClass("fixed", (fromTop > 130));

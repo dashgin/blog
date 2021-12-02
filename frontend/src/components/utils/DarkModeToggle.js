@@ -31,7 +31,7 @@ const DarkMode = () => {
     return (
         <div>
             <button style={{zIndex:9}}
-                className={`icon-button px-3 d-none d-lg-inline-flex ms-2 ${theme === "dark" ? clickedClass : ""}`}
+                className={`icon-button px-3 d-inline-flex ms-2 ${theme === "dark" ? clickedClass : ""}`}
                 onClick={e => switchTheme(e)}>
                 <i className="fas fa-sun"></i>
             </button>

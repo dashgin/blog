@@ -47,14 +47,7 @@ class Search extends Component {
 
     render() {
         return (
-            // <div className="search-popup">
-            //     <button className="btn-close" aria-label="Close" type="button"></button>
-            //     <div className="search-content">
-            //         <div className="text-center">
-            //             <h3 className="mb-4 mt-0">Press ESC to close</h3>
-            //         </div>
-
-            <SearchTag
+           <SearchTag
                 loading={this.state.loading}
                 resultRenderer={this.resultRenderer}
                 onSearchChange={this.handleChange}
@@ -67,8 +60,6 @@ class Search extends Component {
                 noResultsMessage={'No posts found.'}
                 selectFirstResult={true}
             />
-            //     </div>
-            // </div>
         )
     }
 }

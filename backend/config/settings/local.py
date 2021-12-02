@@ -11,7 +11,7 @@ SECRET_KEY = env(
     default="kZqKGkqvUtug1zdtzX1ppoCWaOPeLXAVn307wK6AIbl5CBHIrjGBJdMzXvLH2lCw",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "172.19.0.3"]
+ALLOWED_HOSTS = ["*"]
 
 
 # DATABASES
@@ -67,7 +67,7 @@ INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa F405
 # "SHOW_TEMPLATE_CONTEXT": True,
 # }
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#internal-ips
-INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
+INTERNAL_IPS = ["*"]
 if env("USE_DOCKER") == "yes":
     import socket
 

@@ -18,21 +18,22 @@ function App() {
   return (
     <Router>
       <Header />
-      <section className="main-content">
-        <div className="container-xl"><div className="row gy-4">
-          <div className="col-lg-8">
-            <Switch>
-              <Route path='/' exact component={PostList} />
-              <Route path='/contact' exact component={Contact} />
-              <Route path='/archive' exact component={PostArchive} />
-              <Route path='/posts/:slug' component={PostDetail} />
-              <Route path='/categories/:slug' component={CategoryDetail} />
-            </Switch>
+      <section className="main-content" style={{marginTop:'80px'}}>
+        <div className="container-xl">
+          <div className="row ">
+            <div className="col-lg-9">
+              <Switch>
+                <Route path='/' exact component={PostList} />
+                <Route path='/contact' exact component={Contact} />
+                <Route path='/archive' exact component={PostArchive} />
+                <Route path='/posts/:slug' component={PostDetail} />
+                <Route path='/categories/:slug' component={CategoryDetail} />
+              </Switch>
+            </div>
+            <div className="col-lg-3 sticky-top px-4">
+              <Sidebar />
+            </div>
           </div>
-          <div className="col-lg-4">
-            <Sidebar />
-          </div>
-        </div>
         </div>
       </section>
       <Footer />

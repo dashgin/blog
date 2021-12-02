@@ -9,7 +9,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="post-tabs widget rounded">
-                <ul className="nav nav-tabs nav-pills nav-fill" id="postTab" role="tablist">
+                <ul className="nav-tabs nav-pills nav d-flex justify-content-evenly" id="postTab" role="tablist">
                     <li className="nav-item" role="presentation">
                         <button aria-controls="popular" aria-selected="true" className="nav-link active"
                             data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab"
