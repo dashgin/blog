@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import API from '../../../utils/API';
+import API from '../../../services/API';
 const Newsletter = () => {
 
 
