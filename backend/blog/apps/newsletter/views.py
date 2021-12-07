@@ -5,39 +5,24 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.generics import CreateAPIView
 from .models import SubscribedUser
+from .serializers import SubscribedUserSerializer
 
-
-class Subscribe(APIView):
+class Subscribe(CreateAPIView):
     """
-    an API View for send email verification to add user to supscribers list
+    an API View add user to supscribers list
     """
-
-    def post(self, request, email):
+    serializer_class = SubscribedUserSerializer
+    
+    def post(self, request, *args, **kwargs):
         """
-        post method for sending email verification to add user to subscribers list
+        add user to subscribers list
         """
-        if not email:
-            return Response({"message": "email is required"}, status=400)
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return Response({"message": "email is invalid"}, status=400)
-        if SubscribedUser.objects.filter(email=email).exists():
-            return Response({"message": "email already exists"}, status=400)
-        subscriber = SubscribedUser.objects.create(email=email)
-
-        send_mail(
-            from_email=settings.ADMIN_EMAIL,
-            recipient_list=[subscriber.email],
-            subject="Newsletter Confirmation",
-            message=f'Thank you for signing up for my email newsletter! \
-                        Please complete the process by \
-                        <a href="{reverse("api:newsletter:confirm")}?email={subscriber.email}&conf_num={subscriber.conf_num}"> clicking here to  confirm your registration</a>. if you did\'nt enter your email don\'t mention this email',  # noqa
-        )
-        return Response(
-            {"message": "email sent successfully, please confirm"}, status=200
-        )
-
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=201)
 
 class Confirm(APIView):
     """

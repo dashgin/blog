@@ -41,7 +41,7 @@ const PostCard = ({ post, loading }) => {
             </h5>
             <p className="excerpt mb-0 px-1">
                 {post.post_tags.map(tag => (
-                    <small className="tag border-0 py-1 px-2 ms-1 bg-dark text-white">#{tag.name}</small>
+                    <small className="tag border-0 py-1 px-2 ms-1 bg-dark text-white" key={tag.slug}>#{tag.name}</small>
                 ))}
                 <small className="float-end">
                     <i className="fas fa-eye"></i> {post.post_view_count}

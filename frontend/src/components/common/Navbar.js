@@ -9,12 +9,12 @@ export default function Navbar() {
 
         <nav className="navbar navbar-expand-lg">
             <div className="container-xl">
-                <a href="index.html"
+                <Link to="/"
                     className="navbar-brand text-dark rounded py-1 px-2 bordered">
 
                     {/* <!-- <img src="images/logo.svg" alt=""> --> */}
                     Blog
-                </a>
+                </Link>
                 <span className="d-lg-none w-lg-25">
                     <Search />
                 </span>
@@ -32,16 +32,16 @@ export default function Navbar() {
                             <Link to='/archive' className="nav-link">Post Archive</Link>
 
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a href="!#" className="nav-link">About</a>
                         </li>
                         <li className="nav-item">
                             <a href="!#" className="nav-link">Contact</a>
-                        </li>
+                        </li> */}
                         <li className="nav-item dropdown ">
                             <a href="!#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                                <Categories/>
+                            <Categories />
                         </li>
 
                     </ul>

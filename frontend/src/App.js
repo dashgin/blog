@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-import '../node_modules/simple-line-icons/dist/styles/simple-line-icons.css';
+// import '../node_modules/simple-line-icons/dist/styles/simple-line-icons.css';
+import '../node_modules/highlight.js/styles/a11y-dark.css';
 import './assets/style.css'
 
 import Header from './components/common/Header';

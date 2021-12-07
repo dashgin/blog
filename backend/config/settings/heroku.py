@@ -28,7 +28,7 @@ DATABASES = {
         "CONN_MAX_AGE": 600,
     }
 }
-DATABASES["default"] = dj_database_url.config(conn_max_age=600)  
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 # SECURITY
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -61,6 +61,11 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 EMAIL_BACKEND = os.environ.get(
     "DJANGO_EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
 )
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email

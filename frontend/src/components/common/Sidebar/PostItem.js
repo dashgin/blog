@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const PostItem = ({ posts }) => {
     return (
@@ -9,7 +10,10 @@ const PostItem = ({ posts }) => {
                         <div className="post post-list-sm" key={post.id}>
                             <div className="details clearfix">
                                 <h6 className="post-title my-0 fs-5 px-0">
-                                    <a href="!#">{post.title}</a>
+                                    <Link to={`/posts/${post.slug}/`}>
+                                        {post.title}
+                                    </Link>
+
                                 </h6>
                                 <ul className="meta list-inline mt-1 mb-0">
                                     <li className="list-inline-item">

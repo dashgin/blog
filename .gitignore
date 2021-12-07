@@ -68,7 +68,6 @@ target/
 .venv
 venv/
 ENV/
-
 # Rope project settings
 .ropeproject
 
@@ -274,7 +273,8 @@ blog/media/
 
 .pytest_cache/
 
-
+frontend/.envs/.production/*
+backend/.envs/.production/*
 .ipython/
 .env
 .envs/*

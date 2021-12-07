@@ -12,7 +12,9 @@ class SubscribedUser(models.Model):
     conf_num = models.UUIDField(default=uuid.uuid4)
     is_active = models.BooleanField(default=False)
 
-
+    def __str__(self):
+        return self.email
+        
 class BaseNewsletter(TimestampedModel):
     """
     BaseModel for Newsletter
