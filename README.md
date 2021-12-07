@@ -1,7 +1,7 @@
 # Blog with Django-Rest-faremework and React
 
 ## Specifications:
-* Frontend with Material Design Bootstrap
+* Frontend with React
 * Highlightjs for post content
 * Live Search
 * Sharing post on social media(whatsapp, twitter, facebook, ... )
@@ -9,11 +9,11 @@
 * Categories and tags
 * Post views(one view for per ip adress)
 * Most reads three posts
-
-
-### Coming soon:
-* Comment system
+* Recent three posts
+* Comment system (with disqus)
 * Subscription with email
+
+### For future:
 * PWA(Progressive Web Application)
 * Multi Language Support
 * ...
