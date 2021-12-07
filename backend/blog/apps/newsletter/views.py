@@ -1,20 +1,21 @@
 import re
 
-from django.conf import settings
-from django.core.mail import send_mail
-from django.urls import reverse
+from django.http.response import HttpResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
+
 from .models import SubscribedUser
 from .serializers import SubscribedUserSerializer
+
 
 class Subscribe(CreateAPIView):
     """
     an API View add user to supscribers list
     """
+
     serializer_class = SubscribedUserSerializer
-    
+
     def post(self, request, *args, **kwargs):
         """
         add user to subscribers list
@@ -23,6 +24,7 @@ class Subscribe(CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=201)
+
 
 class Confirm(APIView):
     """
@@ -46,7 +48,7 @@ class Confirm(APIView):
         subscriber = SubscribedUser.objects.get(email=email, conf_num=conf_num)
         subscriber.is_active = True
         subscriber.save()
-        return Response({"message": "email confirmed successfully"}, status=200)
+        return HttpResponse("Email confirmed successfully")
 
 
 class Unsubscribe(APIView):

@@ -28,7 +28,7 @@ const Newsletter = () => {
                 <h3 className="widget-title">Newsletter</h3>
             </div>
             <div className="widget-content">
-                <span className="newsletter-headline text-center mb-3">Join 50,000 subscribers</span>
+                <span className="newsletter-headline text-center mb-3">Join for get email when there is new post on site</span>
 
                 <form onSubmit={formik.handleSubmit}>
                     <div className="mb-2">
