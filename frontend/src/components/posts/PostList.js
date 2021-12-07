@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import API from '../../services/API'
+import Pagination from '../utils/Pagination'
 import PostCard from './PostCard'
 
 
-export default function PostList() {
+export default function PostList({ match }) {
     const [posts, setPosts] = useState([])
     const [data, setData] = useState({})
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
 
-    let url = `/posts/${page && `?page=${page}`}`
+    const categorySlug = match.params.categorySlug !== undefined ? match.params.categorySlug : ''
+    const tagSlug = match.params.tagSlug !== undefined ? match.params.tagSlug : ''
+    const url = (
+        `/posts/${page && `?page=${page}`}${categorySlug && `&category=${categorySlug}`}${tagSlug && `&tag=${tagSlug}`}`
+    );
 
     // eslint-disable-next-line
     function timeout(delay) { return new Promise(res => setTimeout(res, delay)) }
 
     const getPosts = async () => {
         setLoading(true)
+        console.log(url)
         const res = await API.get(url)
         setData(res.data)
         setPosts(res.data.result)
@@ -40,28 +46,7 @@ export default function PostList() {
                         )}
                     </div>
 
-                    <div className="text-center">
-                        {/* <button className="btn btn-simple">Load More</button> */}
-                        <nav className="my-4" aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
-                                <li className={
-                                    `${data.previous ? "page-item px-1 " : "page-item px-1 d-none"}`
-                                }>
-                                    <button className="page-link"
-                                        onClick={
-                                            () => data.previous ? setPage(page - 1) : ''
-                                        }>⟨⟨</button>
-                                </li>
-                                <li className="page-item active">
-                                    <span className="page-link py-1">{page}</span>
-                                </li>
-                                <li className={`${data.next ? "page-item px-1 " : "page-item px-1 d-none"}`}>
-                                    <button className="page-link"
-                                        onClick={() => data.next ? setPage(page + 1) : ''}>⟩⟩</button>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <Pagination data={data} page={page} setPage={setPage} />
                 </div>
             </div>
         </div>

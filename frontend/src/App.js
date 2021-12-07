@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import '../node_modules/simple-line-icons/dist/styles/simple-line-icons.css';
-import '../node_modules/highlight.js/styles/a11y-dark.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+import '../node_modules/simple-line-icons/dist/styles/simple-line-icons.css';
+import '../node_modules/highlight.js/styles/atom-one-dark.css';
 import './assets/style.css'
 
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import PostList from './components/posts/PostList';
 import PostDetail from './components/posts/PostDetail';
 import PostArchive from './components/posts/PostArchive';
 import Contact from './components/pages/Contact';
-import CategoryDetail from './components/pages/CategoryDetail';
-import Sidebar from "./components/common/Sidebar/index";
+import Sidebar from "./components/layout/Sidebar/index";
 
 function App() {
+  console.log(process.env);
   return (
     <Router>
       <Header />
@@ -27,7 +28,8 @@ function App() {
                 <Route path='/contact' exact component={Contact} />
                 <Route path='/archive' exact component={PostArchive} />
                 <Route path='/posts/:slug' component={PostDetail} />
-                <Route path='/categories/:slug' component={CategoryDetail} />
+                <Route path='/categories/:categorySlug' component={PostList} />
+                <Route path='/tags/:tagSlug' component={PostList} />
               </Switch>
             </div>
             <div className="col-lg-3 sticky-top px-4">

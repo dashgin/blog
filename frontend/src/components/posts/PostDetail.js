@@ -49,7 +49,7 @@ export default function PostDetail({ match }) {
             </section>
             <hr></hr>
             <DiscussionEmbed
-                shortname='dashgin-personal-blog'
+                shortname={process.env.REACT_APP_DISQUS_SHORTNAME}
                 config={
                     {
                         url: window.location.href,

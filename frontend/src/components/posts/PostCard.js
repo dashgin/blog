@@ -11,7 +11,7 @@ const PostCard = ({ post, loading }) => {
     return (
         <div className="post border-bottom pb-4 mb-4" key={post.id}>
             <div className="thumb rounded">
-                <a href="/" className="category-badge position-absolute">{post.category}</a>
+                <Link to={`/categories/${post.category_slug}`} className="category-badge position-absolute">{post.category}</Link>
                 <Link to={`/posts/${post.slug}/`}>
 
                     <div className="inner"  style={{maxHeight:"300px", width:"100%"}}>

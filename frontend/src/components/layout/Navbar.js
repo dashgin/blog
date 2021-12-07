@@ -32,12 +32,9 @@ export default function Navbar() {
                             <Link to='/archive' className="nav-link">Post Archive</Link>
 
                         </li>
-                        {/* <li className="nav-item">
-                            <a href="!#" className="nav-link">About</a>
-                        </li>
                         <li className="nav-item">
-                            <a href="!#" className="nav-link">Contact</a>
-                        </li> */}
+                            <Link to={'/contact'} className="nav-link">Contact</Link>
+                        </li>
                         <li className="nav-item dropdown ">
                             <a href="!#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Categories</a>

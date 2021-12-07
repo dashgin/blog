@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import API from '../../services/API'
 
 const Categories = () => {
@@ -23,7 +24,7 @@ const Categories = () => {
             {
                 categories.map(category => (
                     <li key={category.slug}>
-                        <a href="!#" className="dropdown-item">{category.name}</a>
+                        <Link to={`/categories/${category.slug}`} className="dropdown-item">{category.name}</Link>
                     </li>
                 ))
             }

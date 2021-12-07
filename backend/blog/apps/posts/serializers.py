@@ -20,6 +20,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
 class PostReadSerializer(serializers.ModelSerializer):
     author = serializers.CharField(source="author.username")
     category = serializers.CharField(source="category.name")
+    category_slug = serializers.CharField(source="category.slug")
     post_tags = TagsListSerializer(source="tags", many=True)
     date_display = serializers.SerializerMethodField()
     post_view_count = serializers.IntegerField(source="view_count")
@@ -38,6 +39,7 @@ class PostReadSerializer(serializers.ModelSerializer):
             "content",
             "image",
             "category",
+            "category_slug",
             "post_tags",
             "date_display",
             "url",

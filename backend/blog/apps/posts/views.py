@@ -44,8 +44,15 @@ class PostListAPIView(ListAPIView):
     pagination_class = SimplePagination
 
     def get_queryset(self):
-        # TODO: add filter by tag and category with queryparam
-        return Post.objects.published()
+        """override for filter by tag and category with queryparam"""
+        queryset = Post.objects.published()
+        tags = self.request.GET.getlist("tag", None)
+        category = self.request.GET.get("category", None)
+        if tags:
+            queryset = queryset.filter(tags__slug__in=tags)
+        if category:
+            queryset = queryset.filter(category__slug=category)
+        return queryset
 
 
 post_list_view = PostListAPIView.as_view()

@@ -22,7 +22,7 @@ const Tags = () => {
             <div className="widget-content">
                 {
                     tags.map(tag => (
-                        <Link to={`/tags/${tag.slug}`} className="tag me-1" key={tag.slug}>
+                        <Link to={`/tags/${tag.slug}/`} className="tag me-1" key={tag.slug}>
                             {'#' + tag.name}
                         </Link>
                     ))
