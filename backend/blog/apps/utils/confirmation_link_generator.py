@@ -1,5 +1,6 @@
-from django.urls import reverse
 from django.contrib.sites.models import Site
+from django.urls import reverse
+
 
 def generate_confirmation_link(user):
     """

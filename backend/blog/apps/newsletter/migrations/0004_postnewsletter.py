@@ -7,23 +7,42 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('posts', '0002_auto_20211109_1855'),
-        ('newsletter', '0003_rename_subscribedusers_subscribeduser'),
+        ("posts", "0002_auto_20211109_1855"),
+        ("newsletter", "0003_rename_subscribedusers_subscribeduser"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PostNewsletter',
+            name="PostNewsletter",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('modified_at', models.DateTimeField(auto_now=True, verbose_name='modified at')),
-                ('subject', models.CharField(max_length=150)),
-                ('message', models.FileField(upload_to='uploaded_newsletters/')),
-                ('post', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='posts.post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "modified_at",
+                    models.DateTimeField(auto_now=True, verbose_name="modified at"),
+                ),
+                ("subject", models.CharField(max_length=150)),
+                ("message", models.FileField(upload_to="uploaded_newsletters/")),
+                (
+                    "post",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE, to="posts.post"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

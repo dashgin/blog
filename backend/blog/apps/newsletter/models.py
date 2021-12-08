@@ -14,7 +14,8 @@ class SubscribedUser(models.Model):
 
     def __str__(self):
         return self.email
-        
+
+
 class BaseNewsletter(TimestampedModel):
     """
     BaseModel for Newsletter

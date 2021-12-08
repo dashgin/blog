@@ -55,7 +55,6 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "rest_framework.authtoken",
-    # "taggit",
     "corsheaders",
     "drf_yasg",
     "ckeditor",

@@ -1,11 +1,10 @@
-from django.utils.functional import empty
-from rest_framework import serializers
 from django.conf import settings
 from django.core.mail import send_mail
-from django.urls import reverse
+from rest_framework import serializers
 
-from .models import SubscribedUser
 from ..utils.confirmation_link_generator import generate_confirmation_link
+from .models import SubscribedUser
+
 
 class SubscribedUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,7 +22,7 @@ class SubscribedUserSerializer(serializers.ModelSerializer):
                 from_email=settings.ADMIN_EMAIL,
                 recipient_list=[user.email],
                 subject="Newsletter Confirmation",
-                html_message=f"Thank you for signing up for my email newsletter! Please complete the process by clicking {conf_btn} to confirm your registration.if you did\'nt enter your email don\'t mention this email",  # noqa
-                message=''
+                html_message=f"Thank you for signing up for my email newsletter! Please complete the process by clicking {conf_btn} to confirm your registration.if you did'nt enter your email don't mention this email",  # noqa
+                message="",
             )
             return user

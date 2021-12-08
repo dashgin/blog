@@ -15,47 +15,96 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250, verbose_name='title')),
-                ('slug', models.CharField(blank=True, max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=250, verbose_name="title")),
+                ("slug", models.CharField(blank=True, max_length=255)),
             ],
             options={
-                'verbose_name': 'category',
-                'verbose_name_plural': 'categories',
+                "verbose_name": "category",
+                "verbose_name_plural": "categories",
             },
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250, verbose_name='title')),
-                ('slug', models.CharField(blank=True, max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=250, verbose_name="title")),
+                ("slug", models.CharField(blank=True, max_length=255)),
             ],
             options={
-                'verbose_name': 'tag',
-                'verbose_name_plural': 'tags',
+                "verbose_name": "tag",
+                "verbose_name_plural": "tags",
             },
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('modified_at', models.DateTimeField(auto_now=True, verbose_name='modified at')),
-                ('title', models.CharField(db_index=True, max_length=250, verbose_name='subject')),
-                ('content', models.TextField(verbose_name='body')),
-                ('image', models.URLField(null=True, verbose_name='image url')),
-                ('is_published', models.BooleanField(default=False)),
-                ('slug', models.SlugField(max_length=255, verbose_name='slug')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.category')),
-                ('tags', models.ManyToManyField(related_name='post_tags', to='posts.Tag')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "modified_at",
+                    models.DateTimeField(auto_now=True, verbose_name="modified at"),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        db_index=True, max_length=250, verbose_name="subject"
+                    ),
+                ),
+                ("content", models.TextField(verbose_name="body")),
+                ("image", models.URLField(null=True, verbose_name="image url")),
+                ("is_published", models.BooleanField(default=False)),
+                ("slug", models.SlugField(max_length=255, verbose_name="slug")),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="posts.category"
+                    ),
+                ),
+                (
+                    "tags",
+                    models.ManyToManyField(related_name="post_tags", to="posts.Tag"),
+                ),
             ],
             options={
-                'ordering': ('-created_at',),
-                'abstract': False,
+                "ordering": ("-created_at",),
+                "abstract": False,
             },
         ),
     ]

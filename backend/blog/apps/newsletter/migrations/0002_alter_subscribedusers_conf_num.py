@@ -7,13 +7,13 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('newsletter', '0001_initial'),
+        ("newsletter", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='subscribedusers',
-            name='conf_num',
+            model_name="subscribedusers",
+            name="conf_num",
             field=models.UUIDField(default=uuid.uuid4),
         ),
     ]

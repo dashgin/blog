@@ -1,9 +1,10 @@
+import os
+
+import dj_database_url
+import django_heroku
+
 from .base import *  # noqa
 from .base import env
-
-import django_heroku
-import dj_database_url
-import os
 
 # GENERAL
 DEBUG = os.environ.get("DEBUG", "False") == "True"
@@ -41,7 +42,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 )
 
 # STATIC
-STATIC_ROOT = str(APPS_DIR / "static")
+STATIC_ROOT = str(APPS_DIR / "static") # noqa
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA
 
