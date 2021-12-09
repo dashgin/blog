@@ -42,7 +42,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 )
 
 # STATIC
-STATIC_ROOT = str(APPS_DIR / "static")  # noqa
+STATIC_ROOT = str(APPS_DIR / "static" / "cdn")  # noqa
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA
 
