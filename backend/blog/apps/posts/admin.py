@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.utils import timezone
 
-from .models import Category, Post, PostViews, Tag
+from .models import Category, Post, PostView, Tag
 
 
 @admin.register(Tag)
@@ -22,8 +23,9 @@ class PostAdmin(admin.ModelAdmin):
         "tags",
         "is_published",
     )
+
     search_fields = ("title", "content")
-    readonly_fields = ["created_at", "reading_time"]
+    readonly_fields = ["created_at", "published_at", "reading_time"]
     fieldsets = (
         (
             None,
@@ -35,14 +37,25 @@ class PostAdmin(admin.ModelAdmin):
                     "tags",
                     "image",
                     "content",
-                    "reading_time"
-                    # "created_at",
-                    # "updated_at",
+                    "reading_time",
+                    "created_at",
+                    "published_at",
                 )
             },
         ),
         ("Permissions", {"fields": ("is_published",)}),
     )
 
+    @admin.action(description="Mark selected posts as published")
+    def make_published(modeladmin, request, queryset):
+        for post in queryset:
+            post.is_published = True
+            post.published_at = timezone.now()
+            post.save()
 
-admin.site.register(PostViews)
+    actions = [make_published]
+
+
+@admin.register(PostView)
+class PostViewAdmin(admin.ModelAdmin):
+    pass

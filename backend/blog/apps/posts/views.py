@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 
 from blog.apps.utils.pagination import SimplePagination
 
-from .models import Category, Post, PostViews, Tag
+from .models import Category, Post, PostView, Tag
 from .serializers import (
     CategoryListSerializer,
     PostArchiveSerializer,
@@ -39,7 +39,7 @@ class PostListAPIView(ListAPIView):
     serializer_class = PostReadSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["title", "content"]
-    ordering_fields = ["created_at", "post_views"]
+    ordering_fields = ["published_at", "post_view"]
     lookup_field = "slug"
     pagination_class = SimplePagination
 
@@ -71,7 +71,7 @@ class PostRetrieveAPIView(RetrieveAPIView):
             if x_forwarded_for
             else self.request.META.get("REMOTE_ADDR")
         )
-        PostViews.objects.get_or_create(post=obj, ip_address=ip)
+        PostView.objects.get_or_create(post=obj, ip_address=ip)
         return obj
 
 
@@ -86,12 +86,12 @@ class PostArchiveAPIView(APIView):
     serializer_class = PostArchiveSerializer
 
     def get(self, request, *args, **kwargs):
-        dates = Post.objects.published().dates("created_at", "year")
+        dates = Post.objects.published().dates("published_at", "year")
         years = [date.year for date in dates]
         posts = [
             {
                 "year": year,
-                "posts": Post.objects.published().filter(created_at__year=year),
+                "posts": Post.objects.published().filter(published_at__year=year),
             }
             for year in years
         ]

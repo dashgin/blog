@@ -21,10 +21,10 @@ export default function PostList({ match }) {
 
     const getPosts = async () => {
         setLoading(true)
-        console.log(url)
         const res = await API.get(url)
         setData(res.data)
         setPosts(res.data.result)
+        console.log(posts)
         setLoading(false)
     }
 

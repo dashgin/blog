@@ -49,7 +49,7 @@ class PostReadSerializer(serializers.ModelSerializer):
         read_only_fields = [f for f in fields]
 
     def get_date_display(self, obj):
-        return obj.created_at.strftime("%d %B, %Y")
+        return obj.published_at.strftime("%d %B, %Y")
 
 
 class PostArchiveReadSerializer(serializers.ModelSerializer):
@@ -69,7 +69,7 @@ class PostArchiveReadSerializer(serializers.ModelSerializer):
         read_only_fields = [f for f in fields]
 
     def get_date_display(self, obj):
-        return obj.created_at.strftime("%d %B")
+        return obj.published_at.strftime("%d %B")
 
 
 class PostArchiveSerializer(serializers.Serializer):

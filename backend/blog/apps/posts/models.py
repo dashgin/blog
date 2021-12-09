@@ -43,11 +43,9 @@ class Category(models.Model):
         return self.name
 
 
-class PostViews(TimestampedModel):
+class PostView(TimestampedModel):
     ip_address = models.GenericIPAddressField(null=True)
-    post = models.ForeignKey(
-        "Post", related_name="post_views", on_delete=models.CASCADE
-    )
+    post = models.ForeignKey("Post", related_name="post_view", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.ip_address} in Post: {self.post.title}"
@@ -71,6 +69,7 @@ class Post(TimestampedModel):
     content = RichTextField(_("content"), config_name="post_content")
     image = models.URLField(_("image url"), null=True)
     is_published = models.BooleanField(default=False)
+    published_at = models.DateTimeField(null=True, blank=True)
     slug = models.SlugField(_("slug"), max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -86,7 +85,7 @@ class Post(TimestampedModel):
 
     @property
     def view_count(self):
-        return PostViews.objects.filter(post=self).count()
+        return PostView.objects.filter(post=self).count()
 
     @property
     def reading_time(self):

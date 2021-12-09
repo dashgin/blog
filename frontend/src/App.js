@@ -15,13 +15,12 @@ import Contact from './components/pages/Contact';
 import Sidebar from "./components/layout/Sidebar/index";
 
 function App() {
-  console.log(process.env);
   return (
     <Router>
       <Header />
-      <section className="main-content" style={{marginTop:'80px'}}>
+      <section className="main-content" style={{ marginTop: '80px' }}>
         <div className="container-xl">
-          <div className="row ">
+          <div className="row pt-5">
             <div className="col-lg-9">
               <Switch>
                 <Route path='/' exact component={PostList} />

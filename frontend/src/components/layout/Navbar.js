@@ -7,7 +7,7 @@ export default function Navbar() {
 
     return (
 
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg py-2">
             <div className="container-xl">
                 <Link to="/"
                     className="navbar-brand text-dark rounded py-1 px-2 bordered">
