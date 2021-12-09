@@ -33,7 +33,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV BUILD_ENV ${BUILD_ENVIRONMENT}
 
-WORKDIR ${APP_HOME}
+WORKDIR ${APP_HOME}/backend
 
 # Install required system dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -64,6 +64,6 @@ RUN chmod +x /start
 
 
 # copy application code to WORKDIR
-COPY ./backend ${APP_HOME}
+COPY ./backend ${APP_HOME}/backend
 
 ENTRYPOINT ["/entrypoint"]
