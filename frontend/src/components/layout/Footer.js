@@ -11,28 +11,23 @@ export default function Footer() {
                         <div className="col-md-4 text-center">
                             <ul className="social-icons list-unstyled list-inline mb-0">
                                 <li className="list-inline-item">
-                                    <a href="!#">
+                                    <a href="https://www.facebook.com/dashqin.khudiyev">
                                         <i className="fab fa-facebook-f"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a href="!#">
+                                    <a href="https://www.instagram.com/dasqinxudiyev">
                                         <i className="fab fa-instagram"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a href="!#">
-                                        <i className="fab fa-pinterest"></i>
+                                    <a href="https://github.com/dashgin">
+                                        <i className="fab fa-github"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a href="!#">
-                                        <i className="fab fa-itunes"></i>
-                                    </a>
-                                </li>
-                                <li className="list-inline-item">
-                                    <a href="!#">
-                                        <i className="fab fa-youtube"></i>
+                                    <a href="https://www.twitter.com/_dashgin_/">
+                                        <i className="fab fa-twitter"></i>
                                     </a>
                                 </li>
                             </ul>

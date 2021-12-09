@@ -917,6 +917,12 @@
     font-size: .92857143em
 }
 
+@media (max-width: 418px) {
+    .ui.small.search {
+        font-size: .80em !important;
+    }
+}
+
 .ui.search {
     font-size: 1em
 }
