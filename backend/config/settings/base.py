@@ -146,7 +146,7 @@ TEMPLATES = [
 ]
 
 # STATIC
-STATIC_ROOT = str(APPS_DIR / "static")
+STATIC_ROOT = str(APPS_DIR / "static" / "cdn")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [str(APPS_DIR / "static")]
 STATICFILES_FINDERS = [
