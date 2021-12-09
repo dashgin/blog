@@ -7,8 +7,7 @@ from .base import *  # noqa
 from .base import env
 
 # GENERAL
-DEBUG = True
-# DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 CORS_ORIGIN_ALLOW_ALL = False
 
