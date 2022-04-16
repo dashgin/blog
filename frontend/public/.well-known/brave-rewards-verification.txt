@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: dashgin.me
+Token: 70472bbb17fd8e32b0e73fb8f480c84bd687fef0999ce28a91d7a97251d913b7
