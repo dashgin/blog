@@ -1,6 +1,6 @@
 from django.urls.conf import include, path
 
-from .swagger_config import urlpatterns as doc_urls
+from .swagger_urls import urlpatterns as doc_urls
 
 app_name = "api"
 

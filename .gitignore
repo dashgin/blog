@@ -276,6 +276,6 @@ blog/media/
 frontend/.envs/.production/*
 backend/.envs/.production/*
 .ipython/
-.env
+backend/.env
 .envs/*
 !.envs/.local/

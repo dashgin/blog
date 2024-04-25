@@ -8,7 +8,7 @@ services:
   django:
     build:
       context: .
-      dockerfile: ./backend/compose/local/django/Dockerfile
+      dockerfile: ./backend/Dockerfile
     image: blog_backend_local_django
     container_name: django
     depends_on:
@@ -16,24 +16,20 @@ services:
     volumes:
       - ./backend:/app/backend
     env_file:
-      - ./backend/.envs/.local/.django
-      - ./backend/.envs/.local/.postgres
+      - ./backend/.env
     ports:
       - "8000:8000"
     command: /start
 
   postgres:
     restart: always
-    build:
-      context: .
-      dockerfile: ./backend/compose/production/postgres/Dockerfile
-    image: blog_production_postgres
-    container_name: postgres
+    image: postgres:16
+    container_name: blog_local_postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
     env_file:
-      - ./backend/.envs/.local/.postgres
+      - ./backend/.env
 
   frontend:
     build:
