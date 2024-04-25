@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/blog/static/css/main.b11ba6e4.chunk.css",
+    "main.js": "/blog/static/js/main.c624864f.chunk.js",
+    "main.js.map": "/blog/static/js/main.c624864f.chunk.js.map",
+    "runtime-main.js": "/blog/static/js/runtime-main.a4cf3066.js",
+    "runtime-main.js.map": "/blog/static/js/runtime-main.a4cf3066.js.map",
+    "static/css/2.a664b457.chunk.css": "/blog/static/css/2.a664b457.chunk.css",
+    "static/js/2.df149bf5.chunk.js": "/blog/static/js/2.df149bf5.chunk.js",
+    "static/js/2.df149bf5.chunk.js.map": "/blog/static/js/2.df149bf5.chunk.js.map",
+    "static/js/3.7d5869d9.chunk.js": "/blog/static/js/3.7d5869d9.chunk.js",
+    "static/js/3.7d5869d9.chunk.js.map": "/blog/static/js/3.7d5869d9.chunk.js.map",
+    "index.html": "/blog/index.html",
+    "static/css/2.a664b457.chunk.css.map": "/blog/static/css/2.a664b457.chunk.css.map",
+    "static/css/main.b11ba6e4.chunk.css.map": "/blog/static/css/main.b11ba6e4.chunk.css.map",
+    "static/js/2.df149bf5.chunk.js.LICENSE.txt": "/blog/static/js/2.df149bf5.chunk.js.LICENSE.txt",
+    "static/media/simple-line-icons.css": "/blog/static/media/Simple-Line-Icons.f1515a45.svg",
+    "static/media/font-awesome.min.css": "/blog/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4cf3066.js",
+    "static/css/2.a664b457.chunk.css",
+    "static/js/2.df149bf5.chunk.js",
+    "static/css/main.b11ba6e4.chunk.css",
+    "static/js/main.c624864f.chunk.js"
+  ]
+}

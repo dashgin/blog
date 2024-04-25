@@ -1,0 +1,112 @@
+body.dark, body.dark #mostReadId {
+    background-color: #303030 !important;
+    color: #eee;
+}
+
+body.dark .bg-black {
+    background-color: #fff !important;
+}
+
+body.dark .bg-dark {
+    background-color: #eee !important;
+}
+
+body.dark .bg-light {
+    background-color: #303030 !important;
+}
+
+body.dark .bg-white {
+    background-color: #000 !important;
+}
+
+body.dark .nav-link, body.dark .text-dark {
+    color: #d4d4d4 !important;
+}
+
+body.dark .nav-link:hover, body.dark .text-dark:hover {
+    color: #fff1d6 !important;
+}
+
+body.dark .active {
+    color: #fff1d6 !important;
+}
+
+input[type=search]:focus {
+    box-shadow: #000 !important;
+    border-color: #000 !important;
+}
+
+body.dark input[type=search]:focus {
+    box-shadow: #fff !important;
+    border-color: #fff !important;
+}
+
+body.dark .card-footer, body.dark .card-body, body.dark .card-header, body.dark #mostReadId {
+    background-color: #424242!important;
+}
+
+body.dark .card-footer {
+    border-top-color: hsla(0, 0%, 100%, .12);
+}
+
+body.dark .card-footer:last-child {
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+}
+
+body.dark a:not(.sidenav-link):not(.btn):not(.dropdown-item):not(.nav-link):not(.navbar-brand):not(.page-link):not(.carousel-control-prev):not(.carousel-control-next) {
+    color: #72a4f7;
+}
+
+body.dark .card .bg-image {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+body.dark .list-group-item {
+    background-color: #424242;
+    border-color: hsla(0, 0%, 100%, .12);
+}
+
+body.dark .border, body.dark .border-bottom, body.dark .border-left, body.dark .border-right, body.dark .border-top {
+    border-color: hsla(0, 0%, 100%, .12)!important;
+}
+
+body.dark>.card {
+    border: none !important
+}
+
+body.dark .page-link {
+    color: #fff !important;
+}
+
+.page-link {
+    font-family: "Roboto", sans-serif
+}
+
+body.dark .page-link:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, .15);
+}
+
+body.dark .page-item.active .page-link:hover {
+    background-color: #1266f1;
+}
+
+body.dark blockquote {
+    background-color: #5f4e4e;
+    border-left: .3rem solid #161414;
+}
+
+body.dark .dropdown-item {
+    color: #e0e0e0;
+}
+
+body.dark .dropdown-menu {
+    color: #e0e0e0;
+    background-color: #333
+}
+
+body.dark .dropdown-item.active, body.dark .dropdown-item:active, body.dark .dropdown-item:focus, body.dark .dropdown-item:hover {
+    color: #16181b;
+    background-color: #eee;
+}
