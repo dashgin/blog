@@ -1,0 +1,34 @@
+name: Build Frontend & Deploy to CapRover
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "frontend/**"
+
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "frontend/**"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Plans in the works to create tarball from within the caprover/deploy-from-github action.
+      - uses: a7ul/tar-action@v1.2.0
+        with:
+          command: c
+          cwd: "./"
+          files: |
+            ./frontend
+          outPath: deploy.tar
+
+      - uses: caprover/deploy-from-github@main
+        with:
+          server: '${{ vars.CAPROVER_SERVER }}'
+          app: '${{ vars.CAPROVER_FRONTEND_APP_NAME }}'
+          token: '${{ vars.CAPROVER_FRONTEND_APP_TOKEN }}'

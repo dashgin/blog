@@ -24,7 +24,7 @@ export default function PostList({ match }) {
         const res = await API.get(url)
         setData(res.data)
         setPosts(res.data.result)
-        console.log(posts)
+        console.log(`Posts fetched: ${posts}`)
         setLoading(false)
     }
 
