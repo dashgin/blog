@@ -1,5 +1,5 @@
 from .base import *  # noqa
-from .base import env, DATABASES
+from .base import env
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -10,9 +10,12 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["dashgin.com"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
-DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
-DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
+# DATABASES
+DATABASES = {
+    "default":  env.db("DATABASE_URL"),
+    "ATOMIC_REQUESTS": True,
+    "CONN_MAX_AGE": env.int("CONN_MAX_AGE", default=60),
+}
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -65,11 +68,11 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
     )
 ]
 
-# EMAIL
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 465
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
