@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Plans in the works to create tarball from within the caprover/deploy-from-github action.
-      - uses: a7ul/tar-action@v1.1.0
+      - uses: a7ul/tar-action@v1.2.0
         with:
           command: c
           cwd: "./"
