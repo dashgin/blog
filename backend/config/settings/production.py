@@ -13,9 +13,9 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["dashgin.com"])
 # DATABASES
 DATABASES = {
     "default": env.db("DATABASE_URL"),
-    "ATOMIC_REQUESTS": True,
-    "CONN_MAX_AGE": env.int("CONN_MAX_AGE", default=60),
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)
 
 # CACHES
 # ------------------------------------------------------------------------------
