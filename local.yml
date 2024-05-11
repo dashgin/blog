@@ -5,8 +5,8 @@ volumes:
 services:
   django:
     build:
-      context: .
-      dockerfile: ./backend/Dockerfile
+      context: ./backend
+      dockerfile: ./Dockerfile
       args:
         BUILD_ENVIRONMENT: local
     image: blog_backend_local_django
@@ -16,7 +16,7 @@ services:
     volumes:
       - ./backend:/app/backend
     env_file:
-      - ./backend/.env.sample
+      - ./.env.sample
     ports:
       - "8000:8000"
     command: /start
@@ -29,7 +29,7 @@ services:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
     env_file:
-      - ./backend/.env.sample
+      - ./.env.sample
 
   frontend:
     build:
