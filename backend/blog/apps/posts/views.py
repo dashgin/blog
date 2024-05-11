@@ -65,7 +65,7 @@ class PostRetrieveAPIView(RetrieveAPIView):
 
     def get_object(self, *args, **kwargs):
         obj = super().get_object()
-        x_forwarded_for = self.request.META.get("HTTP_X_FORWARDED_FOR")
+        x_forwarded_for = self.request.headers.get("x-forwarded-for")
         ip = (
             x_forwarded_for.split(",")[0]
             if x_forwarded_for

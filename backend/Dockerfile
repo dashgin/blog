@@ -1,7 +1,6 @@
-ARG PYTHON_VERSION=3.9-slim-bullseye
-
 # define an alias for the specfic python version used in this file.
-FROM python:${PYTHON_VERSION} as python
+FROM docker.io/python:3.12.3-slim-bookworm as python
+
 
 # Python build stage
 FROM python as python-build-stage

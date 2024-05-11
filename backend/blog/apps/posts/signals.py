@@ -8,7 +8,6 @@ from .models import Post
 
 @receiver(post_save, sender=Post)
 def create_newsletter_from_post(sender, instance, created, **kwargs):
-
     if created:
         PostNewsletter.objects.create(
             subject=f"New post on blog about {instance.title}",

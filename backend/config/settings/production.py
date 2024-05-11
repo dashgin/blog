@@ -12,7 +12,7 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["dashgin.com"])
 # ------------------------------------------------------------------------------
 # DATABASES
 DATABASES = {
-    "default":  env.db("DATABASE_URL"),
+    "default": env.db("DATABASE_URL"),
     "ATOMIC_REQUESTS": True,
     "CONN_MAX_AGE": env.int("CONN_MAX_AGE", default=60),
 }
@@ -53,7 +53,14 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 
 # STATIC
 STATIC_ROOT = str(APPS_DIR / "static" / "cdn")  # noqa
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 # MEDIA
 
 # TEMPLATES

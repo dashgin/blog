@@ -1,35 +1,40 @@
 {% extends "admin/base.html" %}
 {% load static i18n %}
-
-{% block title %}{{ title }} | {{ site_title|default:_('Situs django admin') }}{% endblock %}
-
+{% block title %}
+    {{ title }} | {{ site_title|default:_("Situs django admin") }}
+{% endblock title %}
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Administrasi django') }}</a></h1>
-{% endblock %}
-
-{% block nav-global %}{% endblock %}
-
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">{{ site_header|default:_("Administrasi django") }}</a>
+    </h1>
+    <style>
+        .flag-icon {
+            margin-right: 3px;
+            padding: 3px;
+            border: 1px solid rgb(204, 174, 174);
+        }
+        #language-icons {
+            margin: -1px 0 0 -65px;
+            position: absolute;
+        }
+    </style>
+{% endblock branding %}
+{% block nav-global %}
+{% endblock nav-global %}
 {% block welcome-msg %}
-
-{# CUSTOM LANGUAGE ICONS #}
-{% get_current_language as LANGUAGE_CODE %}
-{% get_available_languages as LANGUAGES %}
-{% get_language_info_list for LANGUAGES as languages %}
-<span id="language-icons" style="margin: -1px 0 0 -65px; position: absolute;">
-    {% for language in languages %}
-    {% if language.code == 'az' %}
-    <a href="?lang=az" style="margin-right: 3px;padding:3px;border: 1px solid rgb(204, 174, 174);" title="Azerbaijan">
-        AZ
-    </a>
-    {% elif language.code == 'en' %}
-    <a href="?lang=en" style="margin-right: 3px;padding:3px;border: 1px solid rgb(204, 174, 174);" title="English">
-        EN
-    </a>
-    {% endif %}
-    {% endfor %}
-</span>
-
-{# DFEAULT WELCOME MESSAGE GOES HERE #}
-{{ block.super }}
-
-{% endblock %}
+    {# CUSTOM LANGUAGE ICONS #}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+    <span id="language-icons">
+        {% for language in languages %}
+            {% if language.code == 'az' %}
+                <a href="?lang=az" title="Azerbaijan">AZ</a>
+            {% elif language.code == 'en' %}
+                <a href="?lang=en" title="English">EN</a>
+            {% endif %}
+        {% endfor %}
+    </span>
+    {# DFEAULT WELCOME MESSAGE GOES HERE #}
+    {{ block.super }}
+{% endblock welcome-msg %}
