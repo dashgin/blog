@@ -1,4 +1,6 @@
 # Blog with Django-Rest-faremework and React
+Frontend:https://reactive-dj-blog.dashgin.com/
+Backend:https://blog-backend.dashgin.com/
 
 ## Specifications:
 * Frontend with React
