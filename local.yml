@@ -27,22 +27,6 @@ services:
     env_file:
       - ./backend/.env.sample
 
-  frontend:
-    build:
-      context: .
-      dockerfile: ./frontend/compose/local/Dockerfile
-    image: blog_frontend_local
-    container_name: react
-    volumes:
-      - ./frontend:/app/frontend
-      # One-way volume to use node_modules from inside image
-      # - /app/frontend/node_modules
-    ports:
-      - "3000:3000"
-    depends_on:
-      - django
-    command: npm start
-
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
