@@ -2,7 +2,7 @@
 Frontend:https://reactive-dj-blog.dashgin.com/
 Backend:https://blog-backend.dashgin.com/
 
-## Specifications:
+## Features:
 * Frontend with React
 * Highlightjs for post content
 * Live Search
@@ -15,7 +15,8 @@ Backend:https://blog-backend.dashgin.com/
 * Comment system (with disqus)
 * Subscription with email
 
-### For future:
+### To Do:
 * PWA(Progressive Web Application)
 * Multi Language Support
+* RSS Feed
 * ...
