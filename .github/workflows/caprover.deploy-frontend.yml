@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       # Plans in the works to create tarball from within the caprover/deploy-from-github action.
       - uses: a7ul/tar-action@v1.2.0
